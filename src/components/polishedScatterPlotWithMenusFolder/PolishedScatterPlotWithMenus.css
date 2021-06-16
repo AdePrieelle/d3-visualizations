@@ -1,0 +1,47 @@
+.svg-stylized-bar-chart {
+  font-family: "Poppins", sans-serif;
+}
+
+.tick line {
+  stroke: #c0c0bb;
+}
+
+.tick text {
+  fill: #635f5d;
+}
+
+.mark {
+  fill: #137b80;
+}
+
+.axis-label,
+.dropdown-label {
+  font-size: 2.5em;
+  fill: #635f5d;
+  color: #635f5d;
+}
+
+.menus-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-label {
+  margin-right: 15px;
+}
+
+.dropdown-label:not(:first-of-type) {
+  margin-left: 100px;
+}
+
+.Dropdown-root {
+  font-size: 1.5em;
+  width: 300px;
+  display: inline-block;
+}
+
+.Dropdown-menu {
+  max-height: 400px;
+}

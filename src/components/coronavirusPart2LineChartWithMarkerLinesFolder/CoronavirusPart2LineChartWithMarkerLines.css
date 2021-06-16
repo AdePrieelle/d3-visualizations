@@ -1,0 +1,19 @@
+pre {
+  font-size: 8.5em;
+  color: #730000;
+}
+
+path {
+  fill: none;
+  stroke: black;
+  stroke-width: 5px;
+}
+
+.marker-line {
+  stroke: black;
+  stroke-width: 2px;
+}
+
+text {
+  font-size: 2em;
+}

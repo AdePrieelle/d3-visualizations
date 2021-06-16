@@ -1,0 +1,36 @@
+pre {
+  font-size: 8.5em;
+  color: #730000;
+}
+
+path {
+  fill: none;
+  stroke-width: 5px;
+}
+
+.marker-line {
+  stroke: black;
+  stroke-width: 2px;
+}
+
+text {
+  font-size: 2em;
+}
+
+.domain {
+  display: none;
+}
+
+.tick line {
+  stroke: #bbbbbb;
+}
+
+.tick text {
+  fill: #565656;
+  font-size: 14px;
+}
+
+.axis-label {
+  fill: #808080;
+  font-size: 24px;
+}

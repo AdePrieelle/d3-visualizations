@@ -1,0 +1,60 @@
+pre {
+  font-size: 8.5em;
+  color: #730000;
+}
+
+/* path {
+  fill: none;
+  stroke-width: 5px;
+} */
+
+.marker-line {
+  fill: none;
+  stroke: #a2a2a2;
+  stroke-width: 2px;
+}
+
+.marker-line.active {
+  stroke: black;
+}
+
+text {
+  font-size: 2em;
+}
+
+.domain {
+  display: none;
+}
+
+.tick line {
+  stroke: #dedede;
+}
+
+.tick text {
+  fill: #565656;
+  font-size: 14px;
+}
+
+.axis-label,
+.tooltip,
+.title,
+.tooltip-stroke {
+  fill: #808080;
+  font-size: 18px;
+}
+
+.tooltip-stroke {
+  stroke: white;
+  stroke-width: 3px;
+}
+
+.tooltip,
+.title {
+  fill: black;
+}
+
+.voronoi path {
+  fill: none;
+  pointer-events: all;
+  /* stroke: pink; */
+}

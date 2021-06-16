@@ -1,0 +1,59 @@
+.svg-stylized-bar-chart {
+  font-family: "Poppins", sans-serif;
+}
+
+.tick line {
+  stroke: #c0c0bb;
+}
+
+.tick text {
+  fill: #635f5d;
+  /* font-size: 14px; */
+}
+
+.marks circle {
+  /* fill: #137b80; */
+  fill: #0077fff3;
+}
+
+.marks .marks-area {
+  fill: rgba(12, 162, 248, 0.459);
+}
+
+.marks .marks-line {
+  fill: none;
+  /* stroke: #137b80; */
+  stroke: #0077fff3;
+  /* stroke: #91dee1; */
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.axis-label {
+  font-size: 2em;
+  fill: #635f5d;
+}
+
+/* new */
+.domain {
+  stroke: none;
+}
+
+.tick text {
+  font-size: 10px;
+}
+
+.tspan-precipitation-text {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tspan-time {
+  font-size: 14px;
+}
+
+.tspan-precipitation-number {
+  font-size: 14px;
+  fill: rgb(180, 180, 180);
+}

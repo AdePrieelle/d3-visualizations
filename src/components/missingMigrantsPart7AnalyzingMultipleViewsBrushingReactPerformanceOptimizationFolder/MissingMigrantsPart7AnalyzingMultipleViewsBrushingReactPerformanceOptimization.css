@@ -1,0 +1,46 @@
+.svg-stylized-bar-chart {
+  font-family: "Poppins", sans-serif;
+}
+
+.marks .land {
+  fill: #ececec;
+  /* stroke: #c0c0bb; */
+  /* stroke-width: 0; */
+}
+
+.marks .sphere {
+  fill: #fbfbfb;
+  /* stroke: #ececec; */
+}
+
+.marks .interiors {
+  fill: none;
+  stroke: #d9dfe0;
+  /* stroke-width: 1; */
+}
+
+.marks .graticules,
+.tick line {
+  fill: none;
+  stroke: #ececec;
+  /* stroke-width: 1; */
+}
+
+circle {
+  fill: #137b80;
+  opacity: 0.3;
+}
+
+.tick text {
+  fill: #635f5d;
+  font-size: 0.5em;
+}
+
+.mark {
+  fill: #137b80;
+}
+
+.axis-label {
+  font-size: 0.5em;
+  fill: #635f5d;
+}
