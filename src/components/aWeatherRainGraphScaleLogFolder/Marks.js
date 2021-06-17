@@ -1,5 +1,12 @@
 import * as d3 from 'd3';
-export const Marks = ({ data, xScale, yScale, xValue, yValue, innerHeight, tooltipFormat, circleRadius }) => {
+export const Marks = ({ 
+  data, 
+  xScale, 
+  yScale, 
+  xValue, 
+  yValue, 
+  innerHeight
+}) => {
   return (
     <g className="marks">
       <path 
@@ -11,6 +18,7 @@ export const Marks = ({ data, xScale, yScale, xValue, yValue, innerHeight, toolt
           .y1(d => yScale(yValue(d)))
           // .curve(d3.curveNatural)
           .curve(d3.curveStepAfter)
+          // .curve(d3.curveBumpX)
           (data)}
       />
       <path
@@ -20,23 +28,9 @@ export const Marks = ({ data, xScale, yScale, xValue, yValue, innerHeight, toolt
           .y(d => yScale(yValue(d)))
           // .curve(d3.curveNatural)
           .curve(d3.curveStepAfter)
+          // .curve(d3.curveBumpX)
           (data)}
       />
-      {/* {
-        data.map((d, id) => (
-        <circle 
-          key={id}
-          cx={xScale(xValue(d))} 
-          cy={yScale(yValue(d))} 
-          r={circleRadius}
-        >
-          <title>
-            Time: {tooltipFormat(xValue(d)) + '\n'}
-            Precipitation: {yValue(d)}
-          </title>
-        </circle>
-        ))
-      } */}
     </g>
   )
 }

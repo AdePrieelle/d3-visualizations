@@ -1,21 +1,12 @@
-export const AxisLeft= ({ yScale, innerWidth, tickOffset = 3 }) => {
+export const AxisLeft= ({ 
+  yScale, 
+  innerWidth, 
+  tickOffset = 3,
+  rainIntensity
+ }) => {
   return (
-    // yScale.ticks().map((tickValue) => (
-    //   <g className="tick" transform={`translate(0,${yScale(tickValue)})`} key={tickValue}>
-    //     <line x2={innerWidth} />
-    //     <text 
-    //       style={{textAnchor: 'end'}} 
-    //       x={-tickOffset} 
-    //       dy=".32em"
-    //     >
-    //       {tickValue}
-    //     </text>
-    //   </g>
-    // ))
-
-    // new
     <>
-      <g className="tick" transform={`translate(0,${yScale(0)})`}>
+      <g className="tick" transform={`translate(0,${yScale(rainIntensity['Light rain'])})`}>
         <line x2={innerWidth} />
         <text 
           style={{textAnchor: 'end'}} 
@@ -25,7 +16,7 @@ export const AxisLeft= ({ yScale, innerWidth, tickOffset = 3 }) => {
           Light rain
         </text>
       </g>
-      <g className="tick" transform={`translate(0,${yScale(2.5)})`}>
+      <g className="tick" transform={`translate(0,${yScale(rainIntensity['Moderate rain'])})`}>
         <line x2={innerWidth} />
         <text 
           style={{textAnchor: 'end'}} 
@@ -35,8 +26,8 @@ export const AxisLeft= ({ yScale, innerWidth, tickOffset = 3 }) => {
           Moderate rain
         </text>
       </g>
-      {(yScale.domain()[1] > 2.5)
-        ? <g className="tick" transform={`translate(0,${yScale(7.6)})`}>
+      {(yScale.domain()[1] > rainIntensity['Moderate rain'])
+        ? <g className="tick" transform={`translate(0,${yScale(rainIntensity['Heavy rain'])})`}>
             <line x2={innerWidth} />
             <text 
               style={{textAnchor: 'end'}} 
@@ -48,8 +39,8 @@ export const AxisLeft= ({ yScale, innerWidth, tickOffset = 3 }) => {
           </g>
         : null
       }
-      {(yScale.domain()[1] > 7.6)
-        ? <g className="tick" transform={`translate(0,${yScale(50)})`}>
+      {(yScale.domain()[1] > rainIntensity['Heavy rain'])
+        ? <g className="tick" transform={`translate(0,${yScale(rainIntensity['Violent rain'])})`}>
             <line x2={innerWidth} />
             <text 
               style={{textAnchor: 'end'}} 

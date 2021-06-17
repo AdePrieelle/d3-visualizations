@@ -26,15 +26,15 @@ export const exampleWeatherRainData =
     },
     {
       "dt": 1623325980,
-      "precipitation": 10
+      "precipitation": 2
     },
     {
       "dt": 1623326040,
-      "precipitation": 7
+      "precipitation": 2
     },
     {
       "dt": 1623326100,
-      "precipitation": 5
+      "precipitation": 20
     },
     {
       "dt": 1623326160,

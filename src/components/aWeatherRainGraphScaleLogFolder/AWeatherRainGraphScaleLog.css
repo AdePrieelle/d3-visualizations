@@ -23,7 +23,8 @@
 .marks .marks-line {
   fill: none;
   /* stroke: #137b80; */
-  stroke: #0077fff3;
+  /* stroke: #0077fff3; */
+  stroke: #51b5f8;
   /* stroke: #91dee1; */
   stroke-width: 2;
   stroke-linejoin: round;
@@ -56,4 +57,9 @@
 .tspan-precipitation-number {
   font-size: 14px;
   fill: rgb(180, 180, 180);
+}
+
+.text-label-now {
+  font-size: 12px;
+  fill: #635f5d;
 }
