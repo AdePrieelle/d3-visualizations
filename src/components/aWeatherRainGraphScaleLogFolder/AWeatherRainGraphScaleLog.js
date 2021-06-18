@@ -3,6 +3,10 @@ import { exampleWeatherRainData } from './exampleWeatherRainData';
 import { Marks } from './Marks';
 import { AxisBottom } from './AxisBottom';
 import { AxisLeft } from './AxisLeft';
+import { AxisBottomLabel } from './AxisBottomLabel';
+import { AxisLeftLabel } from './AxisLeftLabel';
+import { AxisOuterLines } from './AxisOuterLines';
+import { AxisCurrentTimeLabel } from './AxisCurrentTimeLabel';
 import './AWeatherRainGraphScaleLog.css';
 import { useState } from 'react';
 
@@ -11,6 +15,9 @@ const height = 500;
 const margin = { top: 20, right: 30, bottom: 80, left: 130 };
 const xAxisLabelOffset = 60;
 const yAxisLabelOffset = 90;
+const axisCurrentTimeLabelXOffset = 0;
+const axisCurrentTimeLabelYOffset = 5;
+const axisCurrentTimeTextLabel = "Now";
 
 export const AWeatherRainGraphScaleLog = () => {
   // const data = rainData;
@@ -68,7 +75,7 @@ export const AWeatherRainGraphScaleLog = () => {
 
   const maxYScaleDomain = calculateMaxYScaleDomain(dataDomainMax, rainIntensity);
 
-  console.log(maxYScaleDomain);
+  // console.log(maxYScaleDomain);
 
   const epsilon = 0.1;
 
@@ -96,7 +103,7 @@ export const AWeatherRainGraphScaleLog = () => {
   // fix mobile hovering in graph
 
   const selectedMinute = useState(data[0]);
-  const [xCoord, setXCoord] = useState();
+  const [xCoord, setXCoord] = useState(null);
 
   // add check for if xCoord is defined
   // if (xCoord) {}
@@ -113,33 +120,38 @@ export const AWeatherRainGraphScaleLog = () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
+        <AxisOuterLines 
+          innerWidth={innerWidth}
+          innerHeight={innerHeight}
+        />
+        <AxisCurrentTimeLabel 
+          axisCurrentTimeLabelXOffset={axisCurrentTimeLabelXOffset}
+          axisCurrentTimeLabelYOffset={axisCurrentTimeLabelYOffset}
+          axisCurrentTimeTextLabel={axisCurrentTimeTextLabel}
+        />
         <AxisBottom 
             xScale={xScale} 
             innerHeight={innerHeight}
             tickFormat={xAxisTickFormat}
             tickOffset={10}
           />
-        <text 
-          className="axis-label" 
-          textAnchor="middle"
-          transform={`translate(${-yAxisLabelOffset},${innerHeight / 2}) rotate(-90)`}
-        >
-          {yAxisLabel}
-        </text>
+        <AxisBottomLabel
+          innerWidth={innerWidth}
+          innerHeight={innerHeight}
+          xAxisLabelOffset={xAxisLabelOffset}
+          xAxisLabel={xAxisLabel}
+        />
         <AxisLeft 
           yScale={yScale} 
           innerWidth={innerWidth} 
           tickOffset={10}
           rainIntensity={rainIntensity}
         />
-        <text 
-          className="axis-label" 
-          x={innerWidth / 2} 
-          y={innerHeight + xAxisLabelOffset} 
-          textAnchor="middle"
-        >
-          {xAxisLabel}
-        </text>
+        <AxisLeftLabel
+          yAxisLabelOffset={yAxisLabelOffset}
+          innerHeight={innerHeight}
+          yAxisLabel={yAxisLabel}
+        />
         <Marks 
             data={data} 
             xScale={xScale} 
@@ -150,6 +162,8 @@ export const AWeatherRainGraphScaleLog = () => {
             circleRadius={4}
             innerHeight={innerHeight}
         />
+
+
 
         {/* new line tryout */}
 
@@ -250,10 +264,6 @@ export const AWeatherRainGraphScaleLog = () => {
           </g>
         }
 
-        <line stroke="#c0c0bb" y2={innerHeight} />
-        <line stroke="#c0c0bb" x2={innerWidth} />
-        <line stroke="#c0c0bb" x1={innerWidth} x2={innerWidth} y2={innerHeight} />
-        
         <rect
           width={innerWidth} 
           height={innerHeight}
@@ -262,18 +272,11 @@ export const AWeatherRainGraphScaleLog = () => {
           onMouseMove={(event) => {
             setXCoord(d3.pointer(event)[0]);
           }}
-          onMouseLeave={() => {
-            setXCoord(null);
-          }}
+          // onMouseLeave causes flickering because this component gets rerendered when setXCoord is triggered
+          // onMouseLeave={() => {
+          //   setXCoord(null);
+          // }}
         />
-
-        <text 
-          className="text-label-now"
-          textAnchor="middle"
-          transform={`translate(${0},${-5})`}
-        >
-          Now
-        </text>
 
         {xCoord !== null &&
           <line 
