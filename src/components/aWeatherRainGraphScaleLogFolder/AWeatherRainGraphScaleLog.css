@@ -63,3 +63,13 @@
   font-size: 12px;
   fill: #635f5d;
 }
+
+.select-time-overlay-line {
+  stroke: black;
+  stroke-width: 4;
+}
+
+.select-time-overlay-rect {
+  fill: none;
+  pointer-events: all;
+}

@@ -7,8 +7,9 @@ import { AxisBottomLabel } from './AxisBottomLabel';
 import { AxisLeftLabel } from './AxisLeftLabel';
 import { AxisOuterLines } from './AxisOuterLines';
 import { AxisCurrentTimeLabel } from './AxisCurrentTimeLabel';
+import { SelectTimeOverlay } from './SelectTimeOverlay';
 import './AWeatherRainGraphScaleLog.css';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const width = 960;
 const height = 500;
@@ -102,20 +103,20 @@ export const AWeatherRainGraphScaleLog = () => {
   // new to try to add a line for selected time
   // fix mobile hovering in graph
 
-  const selectedMinute = useState(data[0]);
-  const [xCoord, setXCoord] = useState(null);
+  // const selectedMinute = useState(data[0]);
+  // const [xCoord, setXCoord] = useState(null);
 
-  // add check for if xCoord is defined
-  // if (xCoord) {}
+  // // add check for if xCoord is defined
+  // // if (xCoord) {}
 
-  const hoveredMinuteXCoord = xScale.invert(xCoord);
+  // const hoveredMinuteXCoord = xScale.invert(xCoord);
 
-  // tryout part 2
-  const datesArrayData = data.map(minute => (minute.dt));
-  const indexValueLeftOfXCoord = d3.bisectRight(datesArrayData, hoveredMinuteXCoord) - 1;
+  // // tryout part 2
+  // const datesArrayData = data.map(minute => (minute.dt));
+  // const indexValueLeftOfXCoord = d3.bisectRight(datesArrayData, hoveredMinuteXCoord) - 1;
 
-  const hoveredTimeValue = data[indexValueLeftOfXCoord].dt;
-  const hoveredPrecipitationValue = data[indexValueLeftOfXCoord].precipitation;
+  // const hoveredTimeValue = data[indexValueLeftOfXCoord].dt;
+  // const hoveredPrecipitationValue = data[indexValueLeftOfXCoord].precipitation;
 
   return (
     <svg width={width} height={height}>
@@ -187,7 +188,7 @@ export const AWeatherRainGraphScaleLog = () => {
         >
         </line> */}
 
-        {xCoord !== null &&
+        {/* {xCoord !== null &&
           <g>
             <circle 
               r={8} 
@@ -287,7 +288,17 @@ export const AWeatherRainGraphScaleLog = () => {
               y1={0} 
               y2={innerHeight} 
           />
-        }
+        } */}
+
+        <SelectTimeOverlay 
+          data={data}
+          xScale={xScale}
+          yScale={yScale}
+          innerWidth={innerWidth}
+          innerHeight={innerHeight}
+          rainIntensity={rainIntensity}
+          xAxisTickFormat={xAxisTickFormat}
+        />
 
       </g>
     </svg>
