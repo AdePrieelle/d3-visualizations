@@ -1,30 +1,18 @@
 export const SelectTimeOverlayTooltipText = ({
-  xScale,
-  yScale,
   width,
   height,
-  innerWidth,
-  innerHeight,
   hoveredTimeValue,
   hoveredPrecipitationValue,
   rainIntensity,
   xAxisTickFormat,
-  xBorderRadius,
-  yBorderRadius,
-  tooltipXOffset,
-  tooltipYOffset
+  tooltipXInset,
+  tooltipYInset,
 }) => {
   return (
     <text className="select-time-overlay-tooltip-text">
       <tspan className="tspan-precipitation-text" dominantBaseline="hanging"
-        x={xScale(hoveredTimeValue) < (innerWidth / 2) 
-          ? (xScale(hoveredTimeValue) + (tooltipXOffset + xBorderRadius))
-          : (xScale(hoveredTimeValue) - (width + tooltipXOffset - xBorderRadius))
-        }
-        y={yScale(hoveredPrecipitationValue) < (innerHeight / 2) 
-          ? (yScale(hoveredPrecipitationValue) + (tooltipYOffset + yBorderRadius))
-          : (yScale(hoveredPrecipitationValue) - (height + tooltipYOffset - yBorderRadius))
-        } 
+        x={tooltipXInset}
+        y={tooltipYInset}
       >
         {
             (hoveredPrecipitationValue === rainIntensity['No rain'])
@@ -41,26 +29,14 @@ export const SelectTimeOverlayTooltipText = ({
         }
       </tspan>
       <tspan className="tspan-time" textAnchor="end" dominantBaseline="hanging"
-        x={xScale(hoveredTimeValue) < (innerWidth / 2) 
-          ? (xScale(hoveredTimeValue) + (width + tooltipXOffset - xBorderRadius))
-          : (xScale(hoveredTimeValue) - (tooltipXOffset + xBorderRadius))
-        } 
-        y={yScale(hoveredPrecipitationValue) < (innerHeight / 2) 
-          ? (yScale(hoveredPrecipitationValue) + (tooltipYOffset + yBorderRadius))
-          : (yScale(hoveredPrecipitationValue) - (height + tooltipYOffset - yBorderRadius))
-        } 
+        x={width - tooltipXInset} 
+        y={tooltipYInset} 
       >
         {xAxisTickFormat(hoveredTimeValue)}
       </tspan>
       <tspan className="tspan-precipitation-number"
-        x={xScale(hoveredTimeValue) < (innerWidth / 2) 
-          ? (xScale(hoveredTimeValue) + (tooltipXOffset + xBorderRadius))
-          : (xScale(hoveredTimeValue) - (width + tooltipXOffset - xBorderRadius))
-        }
-        y={yScale(hoveredPrecipitationValue) < (innerHeight / 2) 
-          ? (yScale(hoveredPrecipitationValue) + (height + tooltipYOffset - yBorderRadius))
-          : (yScale(hoveredPrecipitationValue) - (tooltipYOffset + yBorderRadius))
-        } 
+        x={tooltipXInset}
+        y={height - tooltipYInset} 
       >
         {hoveredPrecipitationValue} mm per hour
       </tspan>
