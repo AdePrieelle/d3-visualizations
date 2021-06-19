@@ -45,20 +45,6 @@
   font-size: 10px;
 }
 
-.tspan-precipitation-text {
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.tspan-time {
-  font-size: 14px;
-}
-
-.tspan-precipitation-number {
-  font-size: 14px;
-  fill: rgb(180, 180, 180);
-}
-
 .text-label-now {
   font-size: 12px;
   fill: #635f5d;
@@ -72,4 +58,31 @@
 .select-time-overlay-rect {
   fill: none;
   pointer-events: all;
+}
+
+.select-time-overlay-tooltip-circle {
+  fill: black;
+}
+
+.select-time-overlay-tooltip-rect {
+  fill: rgba(0, 0, 0, 0.8);
+}
+
+.select-time-overlay-tooltip-text {
+  fill: white;
+  font-size: 14px;
+}
+
+.tspan-precipitation-text {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tspan-time {
+  font-size: 14px;
+}
+
+.tspan-precipitation-number {
+  font-size: 14px;
+  fill: rgb(180, 180, 180);
 }

@@ -30,7 +30,7 @@ export const exampleWeatherRainData =
     },
     {
       "dt": 1623326040,
-      "precipitation": 2
+      "precipitation": 5
     },
     {
       "dt": 1623326100,
@@ -38,7 +38,7 @@ export const exampleWeatherRainData =
     },
     {
       "dt": 1623326160,
-      "precipitation": 1.153
+      "precipitation": 52
     },
     {
       "dt": 1623326220,
@@ -206,15 +206,15 @@ export const exampleWeatherRainData =
     },
     {
       "dt": 1623328680,
-      "precipitation": 0.865
+      "precipitation": 52
     },
     {
       "dt": 1623328740,
-      "precipitation": 0.865
+      "precipitation": 20
     },
     {
       "dt": 1623328800,
-      "precipitation": 0.865
+      "precipitation": 5
     },
     {
       "dt": 1623328860,
@@ -222,7 +222,7 @@ export const exampleWeatherRainData =
     },
     {
       "dt": 1623328920,
-      "precipitation": 0.02
+      "precipitation": 0
     },
     {
       "dt": 1623328980,

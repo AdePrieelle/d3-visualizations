@@ -1,3 +1,7 @@
+import { SelectTimeOverlayTooltipCircle } from './SelectTimeOverlayTooltipCircle';
+import { SelectTimeOverlayTooltipRect } from './SelectTimeOverlayTooltipRect';
+import { SelectTimeOverlayTooltipText } from './SelectTimeOverlayTooltipText';
+
 export const SelectTimeOverlayTooltip = ({
   xScale,
   yScale,
@@ -8,30 +12,57 @@ export const SelectTimeOverlayTooltip = ({
   rainIntensity,
   xAxisTickFormat
 }) => {
+  const radius = 8;
+  const width = 190;
+  const height = 65;
+  const xBorderRadius = 12;
+  const yBorderRadius = 12;
+  const tooltipXOffset = 10;
+  const tooltipYOffset = 10;
+
   return (
     <g>
-      <circle 
-        r={8} 
-        fill="black" 
-        cx={xScale(hoveredTimeValue)} 
-        cy={yScale(hoveredPrecipitationValue)}
+      <SelectTimeOverlayTooltipCircle 
+        radius={radius}
+        xScale={xScale}
+        yScale={yScale}
+        hoveredTimeValue={hoveredTimeValue}
+        hoveredPrecipitationValue={hoveredPrecipitationValue}
       />
-      <rect 
-        fill="rgba(0,0,0,0.8)" 
-        width={190} 
-        height={65} 
-        rx={12}
-        ry={12}
-        x={xScale(hoveredTimeValue) < (innerWidth / 2) 
-            ? (xScale(hoveredTimeValue) + 10)
-            : (xScale(hoveredTimeValue) - 200)
-        } 
-        y={yScale(hoveredPrecipitationValue) < (innerHeight / 2) 
-          ? (yScale(hoveredPrecipitationValue) + 10)
-          : (yScale(hoveredPrecipitationValue) - 80)
-        } 
+
+      <SelectTimeOverlayTooltipRect 
+        width={width}
+        height={height}
+        xBorderRadius={xBorderRadius}
+        yBorderRadius={yBorderRadius}
+        tooltipXOffset={tooltipXOffset}
+        tooltipYOffset={tooltipYOffset}
+        xScale={xScale}
+        yScale={yScale}
+        innerWidth={innerWidth}
+        innerHeight={innerHeight}
+        hoveredTimeValue={hoveredTimeValue}
+        hoveredPrecipitationValue={hoveredPrecipitationValue}
       />
-      <text fill="white" fontSize="14">
+
+      <SelectTimeOverlayTooltipText 
+        xScale={xScale}
+        yScale={yScale}
+        width={width}
+        height={height}
+        innerWidth={innerWidth}
+        innerHeight={innerHeight}
+        hoveredTimeValue={hoveredTimeValue}
+        hoveredPrecipitationValue={hoveredPrecipitationValue}
+        rainIntensity={rainIntensity}
+        xAxisTickFormat={xAxisTickFormat}
+        xBorderRadius={xBorderRadius}
+        yBorderRadius={yBorderRadius}
+        tooltipXOffset={tooltipXOffset}
+        tooltipYOffset={tooltipYOffset}
+      />
+
+      {/* <text fill="white" fontSize="14">
         <tspan className="tspan-precipitation-text"
           x={xScale(hoveredTimeValue) < (innerWidth / 2) 
             ? (xScale(hoveredTimeValue) + 20)
@@ -80,8 +111,9 @@ export const SelectTimeOverlayTooltip = ({
         >
           {hoveredPrecipitationValue} mm per hour
         </tspan>
-        
-      </text>
+      </text> */}
+
+
     </g>
   )
 }
