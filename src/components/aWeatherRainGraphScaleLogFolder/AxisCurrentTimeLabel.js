@@ -5,7 +5,7 @@ export const AxisCurrentTimeLabel = ({
 }) => {
   return (
     <text 
-      className="text-label-now"
+      className="text-label-current-time"
       textAnchor="middle"
       transform={`translate(${axisCurrentTimeLabelXOffset},${-axisCurrentTimeLabelYOffset})`}
     >

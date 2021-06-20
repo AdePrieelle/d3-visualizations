@@ -13,7 +13,6 @@ export const Marks = ({
         className="marks-area"
         d={d3.area()
           .x(d => xScale(xValue(d)))
-          // .y0(yScale(0))
           .y0(innerHeight)
           .y1(d => yScale(yValue(d)))
           // .curve(d3.curveNatural)

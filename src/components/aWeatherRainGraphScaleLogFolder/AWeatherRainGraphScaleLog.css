@@ -41,14 +41,9 @@
   stroke: none;
 }
 
-.tick text {
+/* .tick text {
   font-size: 10px;
-}
-
-.text-label-now {
-  font-size: 12px;
-  fill: #635f5d;
-}
+} */
 
 .select-time-overlay-line {
   stroke: black;
@@ -85,4 +80,50 @@
 .tspan-precipitation-number {
   font-size: 14px;
   fill: rgb(180, 180, 180);
+}
+
+.svg-wrapper {
+  position: relative;
+  padding-bottom: 50%;
+}
+
+.svg-graph {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.axis {
+  font-size: 10px;
+}
+
+@media screen and (min-width: 480px) {
+  .axis {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .axis {
+    font-size: 14px;
+  }
+}
+
+.text-label-current-time {
+  fill: #635f5d;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 480px) {
+  .text-label-current-time {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .text-label-current-time {
+    font-size: 16px;
+  }
 }

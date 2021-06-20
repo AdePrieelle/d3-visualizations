@@ -5,7 +5,7 @@ export const AxisLeft= ({
   rainIntensity
  }) => {
   return (
-    <>
+    <g className="axis">
       <g className="tick" transform={`translate(0,${yScale(rainIntensity['Light rain'])})`}>
         <line x2={innerWidth} />
         <text 
@@ -52,26 +52,6 @@ export const AxisLeft= ({
           </g>
         : null
       }
-    </>
+    </g>
   )
 }
-
-// import { useRef, useEffect } from 'react';
-// import * as d3 from 'd3';
-
-// export const AxisLeft = ({ yScale, innerWidth }) => {
-//   const ref = useRef();
-//   useEffect(() => {
-//     const yAxisG = d3.select(ref.current);
-//     const yAxis = d3.axisLeft(yScale)
-//       .tickSize(-innerWidth)
-//       .tickPadding(10)
-//       .ticks(10, "~n");
-//       // .tickFormat((tickValue) => tickValue);
-//     yAxisG.call(yAxis);
-//   }, [yScale, innerWidth]);
-  
-//   return (
-//     <g ref={ref} />
-//   );
-// };

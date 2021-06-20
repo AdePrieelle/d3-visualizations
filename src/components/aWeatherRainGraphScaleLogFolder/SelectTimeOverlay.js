@@ -13,18 +13,10 @@ export const SelectTimeOverlay = ({
   rainIntensity,
   xAxisTickFormat
 }) => {
-  // const selectedMinute = useState(data[0]);
   const [xCoord, setXCoord] = useState(null);
-  
-  // add check for if xCoord is defined
-  // if (xCoord) {}
-  
   const hoveredMinuteXCoord = xScale.invert(xCoord);
-  
-  // tryout part 2
   const datesArrayData = data.map(minute => (minute.dt));
   const indexValueLeftOfXCoord = d3.bisectRight(datesArrayData, hoveredMinuteXCoord) - 1;
-  
   const hoveredTimeValue = data[indexValueLeftOfXCoord].dt;
   const hoveredPrecipitationValue = data[indexValueLeftOfXCoord].precipitation;
 
