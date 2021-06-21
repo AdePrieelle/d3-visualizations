@@ -26,9 +26,21 @@
   /* stroke: #0077fff3; */
   stroke: #51b5f8;
   /* stroke: #91dee1; */
-  stroke-width: 2;
+  stroke-width: 1;
   stroke-linejoin: round;
   stroke-linecap: butt;
+}
+
+@media screen and (min-width: 480px) {
+  .marks .marks-line {
+    stroke-width: 2;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .marks .marks-line {
+    stroke-width: 3;
+  }
 }
 
 .axis-label {
@@ -47,7 +59,19 @@
 
 .select-time-overlay-line {
   stroke: black;
-  stroke-width: 4;
+  stroke-width: 2;
+}
+
+@media screen and (min-width: 480px) {
+  .select-time-overlay-line {
+    stroke-width: 3;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .select-time-overlay-line {
+    stroke-width: 4;
+  }
 }
 
 .select-time-overlay-rect {
@@ -70,16 +94,52 @@
 
 .tspan-precipitation-text {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 480px) {
+  .tspan-precipitation-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .tspan-precipitation-text {
+    font-size: 16px;
+  }
 }
 
 .tspan-time {
-  font-size: 14px;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 480px) {
+  .tspan-time {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .tspan-time {
+    font-size: 14px;
+  }
 }
 
 .tspan-precipitation-number {
-  font-size: 14px;
+  font-size: 10px;
   fill: rgb(180, 180, 180);
+}
+
+@media screen and (min-width: 480px) {
+  .tspan-precipitation-number {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .tspan-precipitation-number {
+    font-size: 14px;
+  }
 }
 
 .svg-wrapper {

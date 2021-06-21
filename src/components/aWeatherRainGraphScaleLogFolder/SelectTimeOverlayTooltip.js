@@ -1,6 +1,7 @@
 import { SelectTimeOverlayTooltipCircle } from './SelectTimeOverlayTooltipCircle';
 import { SelectTimeOverlayTooltipRect } from './SelectTimeOverlayTooltipRect';
 import { SelectTimeOverlayTooltipText } from './SelectTimeOverlayTooltipText';
+import { useSvgWrapperSize } from './useSvgWrapperSize';
 
 export const SelectTimeOverlayTooltip = ({
   xScale,
@@ -12,15 +13,52 @@ export const SelectTimeOverlayTooltip = ({
   rainIntensity,
   xAxisTickFormat
 }) => {
-  const radius = 8;
-  const width = 190;
-  const height = 65;
-  const xBorderRadius = 12;
-  const yBorderRadius = 12;
-  const tooltipXOffset = 10;
-  const tooltipYOffset = 10;
-  const tooltipXInset = 12;
-  const tooltipYInset = 12;
+  let radius;
+  let width;
+  let height;
+  let xBorderRadius;
+  let yBorderRadius;
+  let tooltipXOffset;
+  let tooltipYOffset;
+  let tooltipXInset;
+  let tooltipYInset;
+
+  const svgWrapperWidth = useSvgWrapperSize()[0];
+  const calculateTooltipSize = (svgWrapperWidth) => {
+    if (svgWrapperWidth < 480) {
+      width = 120;
+      radius = 6;
+      height = 40;
+      xBorderRadius = 6;
+      yBorderRadius = 6;
+      tooltipXOffset = 4;
+      tooltipYOffset = 4;
+      tooltipXInset = 6;
+      tooltipYInset = 6;
+    } else if (svgWrapperWidth < 700) {
+      width = 160;
+      radius = 7;
+      height = 55;
+      xBorderRadius = 10;
+      yBorderRadius = 10;
+      tooltipXOffset = 8;
+      tooltipYOffset = 8;
+      tooltipXInset = 10;
+      tooltipYInset = 10;
+    } else {
+      width = 190;
+      radius = 8;
+      height = 65;
+      xBorderRadius = 12;
+      yBorderRadius = 12;
+      tooltipXOffset = 10;
+      tooltipYOffset = 10;
+      tooltipXInset = 12;
+      tooltipYInset = 12;
+    }
+  }
+
+  calculateTooltipSize(svgWrapperWidth);
 
   return (
     <g>
