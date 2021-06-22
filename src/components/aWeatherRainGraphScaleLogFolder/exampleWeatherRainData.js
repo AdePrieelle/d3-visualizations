@@ -1,3 +1,6 @@
+// my time 13:51
+// tallahassi time 07.51
+
 export const exampleWeatherRainData = 
   [
     {

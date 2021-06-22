@@ -16,8 +16,9 @@ export const Marks = ({
           .y0(innerHeight)
           .y1(d => yScale(yValue(d)))
           // .curve(d3.curveNatural)
-          .curve(d3.curveStepAfter)
+          // .curve(d3.curveStepAfter)
           // .curve(d3.curveBumpX)
+          .curve(d3.curveMonotoneX)
           (data)}
       />
       <path
@@ -26,8 +27,9 @@ export const Marks = ({
           .x(d => xScale(xValue(d)))
           .y(d => yScale(yValue(d)))
           // .curve(d3.curveNatural)
-          .curve(d3.curveStepAfter)
+          // .curve(d3.curveStepAfter)
           // .curve(d3.curveBumpX)
+          .curve(d3.curveMonotoneX)
           (data)}
       />
     </g>

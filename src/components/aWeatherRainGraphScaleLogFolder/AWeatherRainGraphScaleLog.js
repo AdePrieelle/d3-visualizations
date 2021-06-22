@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import { exampleWeatherRainData } from './exampleWeatherRainData';
+import { exampleWeatherRainData2 } from './exampleWeatherRainData2';
 import { Marks } from './Marks';
 import { AxisBottom } from './AxisBottom';
 import { AxisLeft } from './AxisLeft';
@@ -19,8 +20,10 @@ const margin = { top: 30, right: 20, bottom: 40, left: 80 };
 const axisCurrentTimeLabelXOffset = 0;
 const axisCurrentTimeLabelYOffset = 5;
 const axisCurrentTimeTextLabel = "Now";
-
+const selectTimeOverLayRectRightPadding = 14;
 const marginLeft = margin.left;
+
+const timeZoneOffset = -14400;
 
 export const AWeatherRainGraphScaleLog = () => {
   const [width, height] = useSvgWrapperSize();
@@ -36,15 +39,24 @@ export const AWeatherRainGraphScaleLog = () => {
   }
   margin.left = calculateMarginLeft(width);
 
-  if(!exampleWeatherRainData) {
+  // if(!exampleWeatherRainData) {
+  //   return <pre style={{fontSize: "7em"}}>Loading...</pre>
+  // }
+  if(!exampleWeatherRainData2) {
     return <pre style={{fontSize: "7em"}}>Loading...</pre>
   }
   
-  // prob 2pm local timezone when we grabbed the exampleWeatherRainData
-  // getting from 13:47 my time but need to adjust to local timezone time?
-  const dataInMiliseconds = exampleWeatherRainData.map(minute => (
+  // const dataInMiliseconds = exampleWeatherRainData.map(minute => (
+  //   {
+  //     dt: minute.dt*1000,
+  //     precipitation: minute.precipitation
+  //   }
+  // ));
+  // const timeZoneOffset = -14400;
+  const dataInMiliseconds = exampleWeatherRainData2.map((minute) => (
     {
-      dt: minute.dt*1000,
+      // dt: ((minute.dt*1000) + (timeZoneOffset*1000)),
+      dt: ((minute.dt+timeZoneOffset)*1000),
       precipitation: minute.precipitation
     }
   ));
@@ -53,7 +65,8 @@ export const AWeatherRainGraphScaleLog = () => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const xAxisTickFormat = d3.timeFormat("%H:%M");
+  // const xAxisTickFormat = d3.timeFormat("%H:%M");
+  const xAxisTickFormat = d3.utcFormat("%H:%M");
 
   const yValue = d => d.precipitation;
   // const yAxisLabel = 'Precipitation in mm';
@@ -108,7 +121,7 @@ export const AWeatherRainGraphScaleLog = () => {
           <AxisBottom 
             xScale={xScale} 
             innerHeight={innerHeight}
-            tickFormat={xAxisTickFormat}
+            xAxisTickFormat={xAxisTickFormat}
             tickOffset={10}
           />
           {/* <AxisBottomLabel
@@ -146,6 +159,7 @@ export const AWeatherRainGraphScaleLog = () => {
             innerHeight={innerHeight}
             rainIntensity={rainIntensity}
             xAxisTickFormat={xAxisTickFormat}
+            selectTimeOverLayRectRightPadding={selectTimeOverLayRectRightPadding}
           />
         </g>
       </svg>

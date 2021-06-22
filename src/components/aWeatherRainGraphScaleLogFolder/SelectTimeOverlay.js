@@ -11,7 +11,8 @@ export const SelectTimeOverlay = ({
   innerWidth,
   innerHeight,
   rainIntensity,
-  xAxisTickFormat
+  xAxisTickFormat,
+  selectTimeOverLayRectRightPadding
 }) => {
   const [xCoord, setXCoord] = useState(null);
   const hoveredMinuteXCoord = xScale.invert(xCoord);
@@ -47,6 +48,7 @@ export const SelectTimeOverlay = ({
           innerWidth={innerWidth}
           innerHeight={innerHeight}
           setXCoord={setXCoord}
+          selectTimeOverLayRectRightPadding={selectTimeOverLayRectRightPadding}
         />
 
     </>

@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import { useSvgWrapperSize } from './useSvgWrapperSize';
 
-export const AxisBottom = ({ xScale, innerHeight }) => {
+export const AxisBottom = ({ xScale, innerHeight, xAxisTickFormat }) => {
   const ref = useRef();
   const width = useSvgWrapperSize()[0];
   const widthBreakpointSmall = 480;
@@ -32,10 +32,10 @@ export const AxisBottom = ({ xScale, innerHeight }) => {
     const xAxis = d3.axisBottom(xScale)
       .tickSize(-innerHeight)
       .ticks(ticksAmount)
-      .tickFormat(d3.timeFormat("%H:%M"))
+      .tickFormat(xAxisTickFormat)
       .tickPadding(tickPaddingAmount);
     xAxisG.call(xAxis);
-  }, [xScale, innerHeight, ticksAmount, tickPaddingAmount]);
+  }, [xScale, innerHeight, ticksAmount, xAxisTickFormat,tickPaddingAmount]);
   
   return (
     <g className="axis" transform={`translate(0,${innerHeight})`} ref={ref} />
