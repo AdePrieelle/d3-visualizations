@@ -8,6 +8,7 @@ export const SelectTimeOverlay = ({
   data,
   xScale,
   yScale,
+  width,
   innerWidth,
   innerHeight,
   rainIntensity,
@@ -29,6 +30,7 @@ export const SelectTimeOverlay = ({
             yScale={yScale}
             hoveredTimeValue={hoveredTimeValue}
             hoveredPrecipitationValue={hoveredPrecipitationValue}
+            width={width}
             innerWidth={innerWidth}
             innerHeight={innerHeight}
             rainIntensity={rainIntensity}

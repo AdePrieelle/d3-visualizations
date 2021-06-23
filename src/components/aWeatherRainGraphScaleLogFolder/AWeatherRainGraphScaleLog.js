@@ -126,6 +126,7 @@ export const AWeatherRainGraphScaleLog = ({
             data={data}
             xScale={xScale}
             yScale={yScale}
+            width={width}
             innerWidth={innerWidth}
             innerHeight={innerHeight}
             rainIntensity={rainIntensity}

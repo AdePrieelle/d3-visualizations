@@ -1,14 +1,14 @@
 export const SelectTimeOverlayTooltipRect = ({
-  width,
-  height,
+  tooltipWidth,
+  tooltipHeight,
   xBorderRadius,
   yBorderRadius,
 }) => {
   return (
     <rect 
       className="select-time-overlay-tooltip-rect"
-      width={width} 
-      height={height} 
+      width={tooltipWidth} 
+      height={tooltipHeight} 
       rx={xBorderRadius}
       ry={yBorderRadius}
     />
