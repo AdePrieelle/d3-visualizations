@@ -7,22 +7,24 @@ export const SelectTimeOverlayRect = ({
   selectTimeOverLayRectRightPadding
 }) => {
   const calculateMouseXCoordValue = (event) => {
-    if ((d3.pointer(event)[0]) < 0) {
+    const rectMouseXCoordValue = d3.pointer(event)[0];
+    if (rectMouseXCoordValue < 0) {
       return 0;
-    } else if ((d3.pointer(event)[0]) > innerWidth) {
+    } else if (rectMouseXCoordValue > innerWidth) {
       return innerWidth;
     } else {
-      return (d3.pointer(event)[0]);
+      return rectMouseXCoordValue;
     }
   }
 
   const calculateTouchXCoordValue = (event) => {
-    if ((d3.pointer(event.touches[0], event.target)[0]) < 0) {
+    const rectTouchXCoordValue = d3.pointer(event.touches[0], event.target)[0];
+    if (rectTouchXCoordValue < 0) {
       return 0;
-    } else if ((d3.pointer(event.touches[0], event.target)[0]) > innerWidth) {
+    } else if (rectTouchXCoordValue > innerWidth) {
       return innerWidth;
     } else {
-      return (d3.pointer(event.touches[0], event.target)[0]);
+      return rectTouchXCoordValue;
     }
   }
 

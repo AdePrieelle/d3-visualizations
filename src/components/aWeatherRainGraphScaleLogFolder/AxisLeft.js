@@ -1,55 +1,46 @@
+import { AxisLeftTick } from './AxisLeftTick';
+
 export const AxisLeft= ({ 
   yScale, 
   innerWidth, 
-  tickOffset = 3,
+  tickOffsetAxisLeft,
   rainIntensity
  }) => {
   return (
     <g className="axis">
-      <g className="tick" transform={`translate(0,${yScale(rainIntensity['Light rain'])})`}>
-        <line x2={innerWidth} />
-        <text 
-          style={{textAnchor: 'end'}} 
-          x={-tickOffset} 
-          dy=".32em"
-        >
-          Light rain
-        </text>
-      </g>
-      <g className="tick" transform={`translate(0,${yScale(rainIntensity['Moderate rain'])})`}>
-        <line x2={innerWidth} />
-        <text 
-          style={{textAnchor: 'end'}} 
-          x={-tickOffset} 
-          dy=".32em"
-        >
-          Moderate rain
-        </text>
-      </g>
+      {/* always render one rain intensity level tick above current max rain intensity value */}
+      <AxisLeftTick 
+        rainIntensityValue={'Light rain'}
+        yScale={yScale}
+        rainIntensity={rainIntensity}
+        innerWidth={innerWidth}
+        tickOffsetAxisLeft={tickOffsetAxisLeft}
+      />
+      <AxisLeftTick 
+        rainIntensityValue='Moderate rain' 
+        yScale={yScale}
+        rainIntensity={rainIntensity}
+        innerWidth={innerWidth}
+        tickOffsetAxisLeft={tickOffsetAxisLeft}
+      />
       {(yScale.domain()[1] > rainIntensity['Moderate rain'])
-        ? <g className="tick" transform={`translate(0,${yScale(rainIntensity['Heavy rain'])})`}>
-            <line x2={innerWidth} />
-            <text 
-              style={{textAnchor: 'end'}} 
-              x={-tickOffset} 
-              dy=".32em"
-            >
-              Heavy rain
-            </text>
-          </g>
+        ? <AxisLeftTick 
+            rainIntensityValue='Heavy rain' 
+            yScale={yScale}
+            rainIntensity={rainIntensity}
+            innerWidth={innerWidth}
+            tickOffsetAxisLeft={tickOffsetAxisLeft}
+          />
         : null
       }
       {(yScale.domain()[1] > rainIntensity['Heavy rain'])
-        ? <g className="tick" transform={`translate(0,${yScale(rainIntensity['Violent rain'])})`}>
-            <line x2={innerWidth} />
-            <text 
-              style={{textAnchor: 'end'}} 
-              x={-tickOffset} 
-              dy=".32em"
-            >
-              Violent rain
-            </text>
-          </g>
+        ? <AxisLeftTick 
+            rainIntensityValue='Violent rain' 
+            yScale={yScale}
+            rainIntensity={rainIntensity}
+            innerWidth={innerWidth}
+            tickOffsetAxisLeft={tickOffsetAxisLeft}
+          />
         : null
       }
     </g>

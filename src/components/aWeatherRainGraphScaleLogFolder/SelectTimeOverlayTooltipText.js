@@ -38,7 +38,7 @@ export const SelectTimeOverlayTooltipText = ({
         x={tooltipXInset}
         y={height - tooltipYInset} 
       >
-        {hoveredPrecipitationValue.toFixed(2)} mm per hour
+        {parseFloat(hoveredPrecipitationValue.toFixed(2))} mm per hour
       </tspan>
     </text>
   )

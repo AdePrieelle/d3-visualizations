@@ -1,31 +1,28 @@
 import * as d3 from 'd3';
-import { exampleWeatherRainData } from './exampleWeatherRainData';
 import { exampleWeatherRainData2 } from './exampleWeatherRainData2';
 import { Marks } from './Marks';
 import { AxisBottom } from './AxisBottom';
 import { AxisLeft } from './AxisLeft';
-// import { AxisBottomLabel } from './AxisBottomLabel';
-// import { AxisLeftLabel } from './AxisLeftLabel';
 import { AxisOuterLines } from './AxisOuterLines';
 import { AxisCurrentTimeLabel } from './AxisCurrentTimeLabel';
 import { SelectTimeOverlay } from './SelectTimeOverlay';
 import './AWeatherRainGraphScaleLog.css';
 import { useSvgWrapperSize } from './useSvgWrapperSize';
 
-// const width = 960;
-// const height = 500;
 const margin = { top: 30, right: 20, bottom: 40, left: 80 };
-// const xAxisLabelOffset = 60;
-// const yAxisLabelOffset = 90;
 const axisCurrentTimeLabelXOffset = 0;
 const axisCurrentTimeLabelYOffset = 5;
 const axisCurrentTimeTextLabel = "Now";
 const selectTimeOverLayRectRightPadding = 14;
 const marginLeft = margin.left;
+const tickOffsetAxisLeft = 10;
 
-const timeZoneOffset = -14400;
+const timezoneOffsetValue = -14400;
 
-export const AWeatherRainGraphScaleLog = () => {
+export const AWeatherRainGraphScaleLog = ({
+  weatherRainData = exampleWeatherRainData2, 
+  timezoneOffset = timezoneOffsetValue
+}) => {
   const [width, height] = useSvgWrapperSize();
 
   const calculateMarginLeft = (width) => {
@@ -39,39 +36,26 @@ export const AWeatherRainGraphScaleLog = () => {
   }
   margin.left = calculateMarginLeft(width);
 
-  // if(!exampleWeatherRainData) {
-  //   return <pre style={{fontSize: "7em"}}>Loading...</pre>
-  // }
-  if(!exampleWeatherRainData2) {
+  
+  if(!weatherRainData) {
     return <pre style={{fontSize: "7em"}}>Loading...</pre>
   }
   
-  // const dataInMiliseconds = exampleWeatherRainData.map(minute => (
-  //   {
-  //     dt: minute.dt*1000,
-  //     precipitation: minute.precipitation
-  //   }
-  // ));
-  // const timeZoneOffset = -14400;
-  const dataInMiliseconds = exampleWeatherRainData2.map((minute) => (
+  const dataTimezoneOffsetInMiliseconds = weatherRainData.map((minute) => (
     {
-      // dt: ((minute.dt*1000) + (timeZoneOffset*1000)),
-      dt: ((minute.dt+timeZoneOffset)*1000),
+      dt: ((minute.dt+timezoneOffset)*1000),
       precipitation: minute.precipitation
     }
   ));
-  const data = dataInMiliseconds;
+  const data = dataTimezoneOffsetInMiliseconds;
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  // const xAxisTickFormat = d3.timeFormat("%H:%M");
   const xAxisTickFormat = d3.utcFormat("%H:%M");
 
   const yValue = d => d.precipitation;
-  // const yAxisLabel = 'Precipitation in mm';
   const xValue = d => d.dt;
-  // const xAxisLabel = 'Time';
 
   const dataDomainMax = d3.max(data, yValue);
   const rainIntensity = {
@@ -119,36 +103,23 @@ export const AWeatherRainGraphScaleLog = () => {
             axisCurrentTimeTextLabel={axisCurrentTimeTextLabel}
           />
           <AxisBottom 
+            width={width}
             xScale={xScale} 
             innerHeight={innerHeight}
             xAxisTickFormat={xAxisTickFormat}
-            tickOffset={10}
           />
-          {/* <AxisBottomLabel
-            innerWidth={innerWidth}
-            innerHeight={innerHeight}
-            xAxisLabelOffset={xAxisLabelOffset}
-            xAxisLabel={xAxisLabel}
-          /> */}
           <AxisLeft 
             yScale={yScale} 
             innerWidth={innerWidth} 
-            tickOffset={10}
+            tickOffsetAxisLeft={tickOffsetAxisLeft}
             rainIntensity={rainIntensity}
           />
-          {/* <AxisLeftLabel
-            yAxisLabelOffset={yAxisLabelOffset}
-            innerHeight={innerHeight}
-            yAxisLabel={yAxisLabel}
-          /> */}
           <Marks 
             data={data} 
             xScale={xScale} 
             yScale={yScale} 
             xValue={xValue}
             yValue={yValue}
-            tooltipFormat={xAxisTickFormat}
-            circleRadius={4}
             innerHeight={innerHeight}
           />
           <SelectTimeOverlay 

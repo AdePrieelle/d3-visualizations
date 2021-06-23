@@ -1,13 +1,12 @@
 import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-import { useSvgWrapperSize } from './useSvgWrapperSize';
 
-export const AxisBottom = ({ xScale, innerHeight, xAxisTickFormat }) => {
+export const AxisBottom = ({ width, xScale, innerHeight, xAxisTickFormat }) => {
   const ref = useRef();
-  const width = useSvgWrapperSize()[0];
   const widthBreakpointSmall = 480;
   const widthBreakpointMedium = 700;
   const widthBreakpointLarge = 900;
+
   const calculateTicksAmount = (width) => {
     if (width >= widthBreakpointMedium) {
       return 12;
@@ -15,6 +14,7 @@ export const AxisBottom = ({ xScale, innerHeight, xAxisTickFormat }) => {
       return 4;
     }
   }
+
   const calculateTickPaddingAmount = (width) => {
     if (width >= widthBreakpointLarge) {
       return 16;
@@ -24,6 +24,7 @@ export const AxisBottom = ({ xScale, innerHeight, xAxisTickFormat }) => {
       return 10;
     }
   }
+  
   const ticksAmount = calculateTicksAmount(width);
   const tickPaddingAmount = calculateTickPaddingAmount(width);
 

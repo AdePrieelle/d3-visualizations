@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+
 export const Marks = ({ 
   data, 
   xScale, 
@@ -15,9 +16,6 @@ export const Marks = ({
           .x(d => xScale(xValue(d)))
           .y0(innerHeight)
           .y1(d => yScale(yValue(d)))
-          // .curve(d3.curveNatural)
-          // .curve(d3.curveStepAfter)
-          // .curve(d3.curveBumpX)
           .curve(d3.curveMonotoneX)
           (data)}
       />
@@ -26,9 +24,6 @@ export const Marks = ({
         d={d3.line()
           .x(d => xScale(xValue(d)))
           .y(d => yScale(yValue(d)))
-          // .curve(d3.curveNatural)
-          // .curve(d3.curveStepAfter)
-          // .curve(d3.curveBumpX)
           .curve(d3.curveMonotoneX)
           (data)}
       />

@@ -188,3 +188,8 @@
     font-size: 16px;
   }
 }
+
+.axis-outer-lines line {
+  stroke: #c0c0bb;
+  stroke-linecap: square;
+}
