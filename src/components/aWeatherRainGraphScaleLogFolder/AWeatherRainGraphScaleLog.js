@@ -16,6 +16,9 @@ const axisCurrentTimeTextLabel = "Now";
 const selectTimeOverLayRectRightPadding = 14;
 const marginLeft = margin.left;
 const tickOffsetAxisLeft = 10;
+const widthBreakpointSmall = 480;
+const widthBreakpointMedium = 700;
+const widthBreakpointLarge = 900;
 
 const timezoneOffsetValue = -14400;
 
@@ -26,9 +29,9 @@ export const AWeatherRainGraphScaleLog = ({
   const [width, height] = useSvgWrapperSize();
 
   const calculateMarginLeft = (width) => {
-    if (width >= 900) {
+    if (width >= widthBreakpointLarge) {
       return marginLeft + 30;
-    } else if (width >= 480) {
+    } else if (width >= widthBreakpointSmall) {
       return marginLeft + 20;
     } else {
       return marginLeft;
@@ -107,6 +110,9 @@ export const AWeatherRainGraphScaleLog = ({
             xScale={xScale} 
             innerHeight={innerHeight}
             xAxisTickFormat={xAxisTickFormat}
+            widthBreakpointSmall={widthBreakpointSmall}
+            widthBreakpointMedium={widthBreakpointMedium}
+            widthBreakpointLarge={widthBreakpointLarge}
           />
           <AxisLeft 
             yScale={yScale} 
@@ -132,6 +138,8 @@ export const AWeatherRainGraphScaleLog = ({
             rainIntensity={rainIntensity}
             xAxisTickFormat={xAxisTickFormat}
             selectTimeOverLayRectRightPadding={selectTimeOverLayRectRightPadding}
+            widthBreakpointSmall={widthBreakpointSmall}
+            widthBreakpointMedium={widthBreakpointMedium}
           />
         </g>
       </svg>

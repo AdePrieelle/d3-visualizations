@@ -1,11 +1,16 @@
 import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
-export const AxisBottom = ({ width, xScale, innerHeight, xAxisTickFormat }) => {
+export const AxisBottom = ({ 
+  width, 
+  xScale, 
+  innerHeight, 
+  xAxisTickFormat,
+  widthBreakpointSmall,
+  widthBreakpointMedium,
+  widthBreakpointLarge
+}) => {
   const ref = useRef();
-  const widthBreakpointSmall = 480;
-  const widthBreakpointMedium = 700;
-  const widthBreakpointLarge = 900;
 
   const calculateTicksAmount = (width) => {
     if (width >= widthBreakpointMedium) {
