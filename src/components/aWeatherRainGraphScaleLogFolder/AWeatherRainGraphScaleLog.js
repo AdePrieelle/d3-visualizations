@@ -7,12 +7,18 @@ import { AxisOuterLines } from './AxisOuterLines';
 import { AxisCurrentTimeLabel } from './AxisCurrentTimeLabel';
 import { SelectTimeOverlay } from './SelectTimeOverlay';
 import { useSvgWrapperSize } from './useSvgWrapperSize';
+import { 
+  dataTimezoneOffsetInMilliseconds,
+  calculateBreakpointSizeMarginLeft,
+  rainIntensityLevels,
+  calculateMaxYScaleDomain
+} from './common/helpers';
 import './AWeatherRainGraphScaleLog.css';
 
 const margin = { top: 30, right: 20, bottom: 40, left: 80 };
-const marginLeft = margin.left;
-const extraMarginLeftLarge = 30;
-const extraMarginLeftMedium = 20;
+const marginLeftLarge = 110;
+const marginLeftMedium = 100;
+const marginLeftSmall = 80;
 const axisCurrentTimeLabelXOffset = 0;
 const axisCurrentTimeLabelYOffset = 5;
 const axisCurrentTimeTextLabel = "Now";
@@ -40,25 +46,16 @@ export const AWeatherRainGraphScaleLog = ({
     return <pre style={{fontSize: "1em"}}>Loading...</pre>
   }
 
-  const dataTimezoneOffsetInMilliseconds = weatherRainData.map((minute) => (
-    {
-      dt: ((minute.dt+timezoneOffset)*1000),
-      precipitation: minute.precipitation
-    }
-  ));
-  const data = dataTimezoneOffsetInMilliseconds;
+  const data = dataTimezoneOffsetInMilliseconds(weatherRainData, timezoneOffset);
 
-  const calculateMarginLeft = (width) => {
-    if (width >= widthBreakpointLarge) {
-      return marginLeft + extraMarginLeftLarge;
-    } else if (width >= widthBreakpointSmall) {
-      return marginLeft + extraMarginLeftMedium;
-    } else {
-      return marginLeft;
-    }
-  }
-  margin.left = calculateMarginLeft(width);
-
+  margin.left = calculateBreakpointSizeMarginLeft(
+    width,
+    widthBreakpointLarge,
+    widthBreakpointSmall,
+    marginLeftLarge,
+    marginLeftMedium,
+    marginLeftSmall
+  );
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
@@ -67,24 +64,7 @@ export const AWeatherRainGraphScaleLog = ({
   const xValue = d => d.dt;
 
   const dataDomainMax = d3.max(data, yValue);
-  const rainIntensity = {
-    "No rain": 0,
-    "Light rain": 0,
-    "Moderate rain": 2.5,
-    "Heavy rain": 7.6,
-    "Violent rain": 50,
-  }
-
-  const calculateMaxYScaleDomain = (dataDomainMax, rainIntensity) => {
-    if (dataDomainMax >= rainIntensity["Heavy rain"]) {
-      return Math.max(dataDomainMax, rainIntensity["Violent rain"]);
-    } else if (dataDomainMax >= rainIntensity["Moderate rain"]) {
-      return Math.max(dataDomainMax, rainIntensity["Heavy rain"]);
-    } else {
-      return Math.max(dataDomainMax, rainIntensity["Moderate rain"]);
-    }
-  }
-
+  const rainIntensity = rainIntensityLevels;
   const maxYScaleDomain = calculateMaxYScaleDomain(dataDomainMax, rainIntensity);
 
   const epsilon = 0.1;

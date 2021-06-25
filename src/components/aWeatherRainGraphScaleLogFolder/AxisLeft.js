@@ -8,7 +8,7 @@ export const AxisLeft= ({
  }) => {
   return (
     <g className="axis">
-      {/* always render one rain intensity level tick above current max rain intensity value */}
+      {/* always render one rain intensity level tick above current max rain intensity value if yScale .nice() is removed */}
       <AxisLeftTick 
         rainIntensityValue={'Light rain'}
         yScale={yScale}
