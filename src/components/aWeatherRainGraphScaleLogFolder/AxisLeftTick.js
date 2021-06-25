@@ -3,14 +3,14 @@ export const AxisLeftTick = ({
   rainIntensity,
   rainIntensityValue,
   innerWidth,
-  tickOffsetAxisLeft
+  axisLeftTickOffset
 }) => {
   return (
     <g className="tick" transform={`translate(0,${yScale(rainIntensity[rainIntensityValue])})`}>
       <line x2={innerWidth} />
       <text 
         style={{textAnchor: 'end'}} 
-        x={-tickOffsetAxisLeft} 
+        x={-axisLeftTickOffset} 
         dy=".32em"
       >
         {rainIntensityValue}

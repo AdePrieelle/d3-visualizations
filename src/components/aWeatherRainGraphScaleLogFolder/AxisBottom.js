@@ -8,25 +8,30 @@ export const AxisBottom = ({
   xAxisTickFormat,
   widthBreakpointSmall,
   widthBreakpointMedium,
-  widthBreakpointLarge
+  widthBreakpointLarge,
+  axisBottomTicksAmountLarge,
+  axisBottomTicksAmountSmall,
+  axisBottomTickPaddingLarge,
+  axisBottomTickPaddingMedium,
+  axisBottomTickPaddingSmall
 }) => {
   const ref = useRef();
 
   const calculateTicksAmount = (width) => {
     if (width >= widthBreakpointMedium) {
-      return 12;
+      return axisBottomTicksAmountLarge;
     } else {
-      return 4;
+      return axisBottomTicksAmountSmall;
     }
   }
 
   const calculateTickPaddingAmount = (width) => {
     if (width >= widthBreakpointLarge) {
-      return 16;
+      return axisBottomTickPaddingLarge;
     } else if (width >= widthBreakpointSmall) {
-      return 12;
+      return axisBottomTickPaddingMedium;
     } else {
-      return 10;
+      return axisBottomTickPaddingSmall;
     }
   }
   

@@ -3,7 +3,7 @@ import { AxisLeftTick } from './AxisLeftTick';
 export const AxisLeft= ({ 
   yScale, 
   innerWidth, 
-  tickOffsetAxisLeft,
+  axisLeftTickOffset,
   rainIntensity
  }) => {
   return (
@@ -14,14 +14,14 @@ export const AxisLeft= ({
         yScale={yScale}
         rainIntensity={rainIntensity}
         innerWidth={innerWidth}
-        tickOffsetAxisLeft={tickOffsetAxisLeft}
+        axisLeftTickOffset={axisLeftTickOffset}
       />
       <AxisLeftTick 
         rainIntensityValue='Moderate rain' 
         yScale={yScale}
         rainIntensity={rainIntensity}
         innerWidth={innerWidth}
-        tickOffsetAxisLeft={tickOffsetAxisLeft}
+        axisLeftTickOffset={axisLeftTickOffset}
       />
       {(yScale.domain()[1] > rainIntensity['Moderate rain'])
         ? <AxisLeftTick 
@@ -29,7 +29,7 @@ export const AxisLeft= ({
             yScale={yScale}
             rainIntensity={rainIntensity}
             innerWidth={innerWidth}
-            tickOffsetAxisLeft={tickOffsetAxisLeft}
+            axisLeftTickOffset={axisLeftTickOffset}
           />
         : null
       }
@@ -39,7 +39,7 @@ export const AxisLeft= ({
             yScale={yScale}
             rainIntensity={rainIntensity}
             innerWidth={innerWidth}
-            tickOffsetAxisLeft={tickOffsetAxisLeft}
+            axisLeftTickOffset={axisLeftTickOffset}
           />
         : null
       }
