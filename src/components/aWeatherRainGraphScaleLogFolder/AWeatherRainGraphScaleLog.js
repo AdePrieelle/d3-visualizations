@@ -13,7 +13,7 @@ import {
   rainIntensityLevels,
   calculateMaxYScaleDomain
 } from './common/helpers';
-import './AWeatherRainGraphScaleLog.css';
+import './styles/AWeatherRainGraphScaleLog.scss';
 
 const margin = { top: 30, right: 20, bottom: 40, left: 80 };
 const marginLeftLarge = 110;

@@ -1,0 +1,145 @@
+@import "./partials/variables";
+
+// wrapper to maintain aspect ratio on resizing
+.svg-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  .svg-graph {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// tick lines and tick text labels
+.tick {
+  line {
+    stroke: $tick-line-axis-outer-lines-color;
+  }
+  text {
+    fill: $tick-text-text-label-current-time-axis-label-color;
+    font-size: 10px;
+    @media screen and (min-width: $breakpoint-small) {
+      font-size: 12px;
+    }
+    @media screen and (min-width: $breakpoint-large) {
+      font-size: 14px;
+    }
+  }
+}
+
+// graph area and graph line
+.marks {
+  .marks-area {
+    fill: rgba(12, 162, 248, 0.459);
+  }
+  .marks-line {
+    fill: none;
+    stroke: #51b5f8;
+    stroke-linejoin: round;
+    stroke-linecap: butt;
+    stroke-width: 1;
+    @media screen and (min-width: $breakpoint-small) {
+      stroke-width: 2;
+    }
+    @media screen and (min-width: $breakpoint-large) {
+      stroke-width: 3;
+    }
+  }
+}
+
+// hide default black line for axis
+.domain {
+  stroke: none;
+}
+
+// lines around the graph
+.axis-outer-lines line {
+  stroke: $tick-line-axis-outer-lines-color;
+  stroke-linecap: square;
+}
+
+// label to indicate the current time (Now)
+.text-label-current-time {
+  fill: $tick-text-text-label-current-time-axis-label-color;
+  font-size: 12px;
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 14px;
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    font-size: 16px;
+  }
+}
+
+// axis labels for xAxis and yAxis, not used in this weatherRain graph
+.axis-label {
+  font-size: 2em;
+  fill: $tick-text-text-label-current-time-axis-label-color;
+}
+
+// vertical line to indicate selected time on hover
+.select-time-overlay-line {
+  stroke: $select-line-tooltip-circle-color;
+  stroke-width: 2;
+  @media screen and (min-width: $breakpoint-small) {
+    stroke-width: 3;
+  }
+  @media screen and (min-width: $breakpoint-medium) {
+    stroke-width: 4;
+  }
+}
+
+// invisible rectangle that enables on hover coordinates functionality
+.select-time-overlay-rect {
+  fill: none;
+  pointer-events: all;
+  touch-action: none;
+}
+
+// circle on vertical line that indicates the selected time data point
+.select-time-overlay-tooltip-circle {
+  fill: $select-line-tooltip-circle-color;
+}
+
+// tooltip rectangle for on hover
+.select-time-overlay-tooltip-rect {
+  fill: rgba(0, 0, 0, 0.8);
+}
+
+// tooltip wrapper for children elements
+.select-time-overlay-tooltip-text {
+  fill: white;
+  font-size: 14px;
+}
+
+// tooltip rain intensity text
+.tspan-precipitation-text {
+  font-weight: 700;
+  font-size: 12px;
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: $breakpoint-medium) {
+    font-size: 16px;
+  }
+}
+
+// tooltip time and precipitation in mm
+.tspan-time,
+.tspan-precipitation-number {
+  font-size: 10px;
+  @media screen and (min-width: $breakpoint-small) {
+    font-size: 12px;
+  }
+  @media screen and (min-width: $breakpoint-medium) {
+    font-size: 14px;
+  }
+}
+
+// precipitation in mm
+.tspan-precipitation-number {
+  fill: rgb(180, 180, 180);
+}

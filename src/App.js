@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.scss';
 // import { LoadingDataInReact } from './components/LoadingDataInReact';
 // import { InteractionWithReact } from './components/InteractionWithReact';
 // import { VisualizingDataWithReactAndD3 } from './components/VisualizingDataWithReactAndD3';
