@@ -15,6 +15,7 @@ import {
 } from './common/helpers';
 import './styles/AWeatherRainGraphScaleLog.scss';
 
+// svg graph size parameters
 const margin = { top: 30, right: 20, bottom: 40, left: 80 };
 const marginLeftLarge = 110;
 const marginLeftMedium = 100;
@@ -34,6 +35,7 @@ const axisBottomTickPaddingMedium = 12;
 const axisBottomTickPaddingSmall = 10;
 const xAxisTickFormat = d3.utcFormat("%H:%M");
 
+// props example timezoneOffset
 const timezoneOffsetValue = -14400;
 
 export const AWeatherRainGraphScaleLog = ({
@@ -65,8 +67,10 @@ export const AWeatherRainGraphScaleLog = ({
 
   const dataDomainMax = d3.max(data, yValue);
   const rainIntensity = rainIntensityLevels;
+  // display one rain intensity level above the current max rain intensity level
   const maxYScaleDomain = calculateMaxYScaleDomain(dataDomainMax, rainIntensity);
 
+  // use epsilon as a small number because scaleLog min domain value cant be zero
   const epsilon = 0.1;
   const yScale = d3.scaleLog()
     .domain([epsilon, maxYScaleDomain])

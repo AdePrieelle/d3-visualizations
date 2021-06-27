@@ -3,6 +3,8 @@ export const useCalculateTooltipSize = (
   widthBreakpointSmall,
   widthBreakpointMedium
 ) => {
+  // tooltip size objects for all breakpoints
+
   const tooltipSizeBreakpointSmall = {
     tooltipWidth: 120,
     tooltipHeight: 40,
